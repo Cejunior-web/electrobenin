@@ -1,0 +1,41 @@
+# Fichiers système Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Fichiers système Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environnement (mots de passe, clés API)
+.env
+.env.local
+.env.production
+
+# Dépendances
+node_modules/
+vendor/
+
+# Fichiers build
+dist/
+build/
+.cache/
+
+# Fichiers temporaires
+*.tmp
+*.bak
+*.old

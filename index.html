@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#00A8CC">
+    
+    <!-- Meta SEO Optimisés -->
+    <title>ElectroBénin - Boutique Électronique au Bénin | Arduino, ESP32, Capteurs</title>
+    <meta name="description" content="🔌 Boutique d'électronique #1 au Bénin. Arduino, Raspberry Pi, ESP32, capteurs et composants. Livraison 24-48h à Cotonou, Porto-Novo, Parakou. Support expert 7j/7.">
+    <meta name="keywords" content="électronique Bénin, Arduino Bénin, ESP32 Cotonou, capteurs électroniques, composants électroniques, Raspberry Pi Bénin, microcontrôleurs, robotique Bénin">
+    <meta name="author" content="ElectroBénin">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://electrobenin.com">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://electrobenin.com">
+    <meta property="og:title" content="ElectroBénin - Composants Électroniques au Bénin">
+    <meta property="og:description" content="Arduino, ESP32, capteurs et modules. Livraison rapide dans tout le Bénin.">
+    <meta property="og:image" content="https://electrobenin.com/images/og-image.jpg">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ElectroBénin - Électronique au Bénin">
+    <meta name="twitter:description" content="Arduino, ESP32, capteurs. Livraison 24-48h.">
+    <meta name="twitter:image" content="https://electrobenin.com/images/twitter-card.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Preconnect pour performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts optimisées (subset minimal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Analytics (à configurer) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX'); // Remplace par ton ID
+    </script>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">⚡</div>
+        <div class="loader-text">ElectroBénin</div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">Electro<span class="highlight">Bénin</span></span>
+                </a>
+                
+                <nav class="nav">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-home"></i> Accueil
+                    </a>
+                    <a href="#products" class="nav-link">
+                        <i class="fas fa-box"></i> Catalogue
+                    </a>
+                    <a href="suivi.html" class="nav-link">
+                        <i class="fas fa-truck"></i> Suivi
+                    </a>
+                    <a href="panier.html" class="nav-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </nav>
+                
+                <button class="menu-toggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Votre Partenaire Électronique au <span class="highlight">Bénin</span></h1>
+                <p class="hero-subtitle">
+                    Arduino, capteurs, modules et outils de qualité pour vos projets. 
+                    Livraison rapide dans tout le pays.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">
+                        <i class="fas fa-bolt"></i> Explorer le catalogue
+                    </a>
+                    <a href="#features" class="btn btn-outline">
+                        <i class="fas fa-info-circle"></i> Nos services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Pourquoi Nous Choisir ?</h2>
+            <p class="section-subtitle">Excellence, rapidité et expertise à votre service</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Livraison 24h-48h</h3>
+                    <p>Dans tout le Bénin avec suivi en temps réel</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Qualité Garantie</h3>
+                    <p>Tous nos produits sont testés et certifiés</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support Expert</h3>
+                    <p>Assistance technique gratuite 7j/7</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Paiement Sécurisé</h3>
+                    <p>Transactions 100% sécurisées</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalogue -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Notre <span class="highlight">Catalogue</span></h2>
+                <p class="section-subtitle">Découvrez notre sélection premium</p>
+            </div>
+            
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Rechercher un produit...">
+            </div>
+            
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">Tous</button>
+                <button class="filter-btn" data-category="Microcontrôleurs">Microcontrôleurs</button>
+                <button class="filter-btn" data-category="Capteurs">Capteurs</button>
+                <button class="filter-btn" data-category="Modules">Modules</button>
+                <button class="filter-btn" data-category="Outils">Outils</button>
+                <button class="filter-btn" data-category="Afficheurs">Afficheurs</button>
+            </div>
+            
+            <div class="products-grid" id="products-container">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Chargement des produits...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Avis Clients</h2>
+                <p class="section-subtitle">Découvrez ce que nos clients disent de leur expérience avec ElectroBénin.</p>
+            </div>
+            
+            <div class="testimonials-separator"></div>
+            
+            <div class="testimonials-grid">
+                <!-- Témoignage 1 -->
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <div class="testimonial-content">
+                        <p>Service excellent et produits de qualité. Je recommande vivement ElectroBénin pour tous vos besoins électroniques.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Koffi Mensah</h4>
+                        <p>Ingénieur électronique</p>
+                    </div>
+                </div>
+                
+                <!-- Témoignage 2 -->
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <div class="testimonial-content">
+                        <p>Livraison rapide et support technique très utile. Parfait pour mes projets d'études ! Les explications détaillées m'ont beaucoup aidé.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Fatou Diallo</h4>
+                        <p>Étudiante en génie</p>
+                    </div>
+                </div>
+                
+                <!-- Témoignage 3 -->
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <div class="testimonial-content">
+                        <p>Large choix de composants et prix compétitifs. Mon fournisseur de référence au Bénin. La qualité des produits est toujours au rendez-vous.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Jean-Baptiste</h4>
+                        <p>Maker passionné</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="newsletter-content">
+                    <h2>Restez Connecté</h2>
+                    <p>Inscrivez-vous pour recevoir nos promotions et conseils techniques</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> S'inscrire
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Colonne 1: Logo et description -->
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">Electro<span class="highlight">Bénin</span></span>
+                    </div>
+                    <p class="footer-description">
+                        Votre partenaire de confiance pour tous vos besoins en composants électroniques au Bénin.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="mailto:contact@electrobenin.com" class="social-link" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://wa.me/22960123456" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Colonne 2: Liens rapides -->
+                <div class="footer-column">
+                    <h3>Boutique</h3>
+                    <ul class="footer-links">
+                        <li><a href="#products">Tous les produits</a></li>
+                        <li><a href="#">Nouveautés</a></li>
+                        <li><a href="#">Promotions</a></li>
+                        <li><a href="#">Meilleures ventes</a></li>
+                        <li><a href="#">Abonnements</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Support -->
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="panier.html">Mon panier</a></li>
+                        <li><a href="suivi.html">Suivi commande</a></li>
+                        <li><a href="#">Guide d'achat</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Contact -->
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+229 60 12 34 56</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@electrobenin.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Cotonou, Bénin</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Lun-Sam : 8h-18h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ElectroBénin. Tous droits réservés.</p>
+                <div class="legal-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                    <a href="#">CGV</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+    
+    <script>
+        // Masquer le loader
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 800);
+        });
+
+        // Menu mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav');
+            
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+
+            // Fermer menu en cliquant sur lien
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

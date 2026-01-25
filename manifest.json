@@ -1,0 +1,110 @@
+{
+  "name": "ElectroBénin - Boutique Électronique",
+  "short_name": "ElectroBénin",
+  "description": "Boutique de composants électroniques au Bénin. Arduino, ESP32, capteurs et modules. Livraison rapide dans tout le pays.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F0F8FF",
+  "theme_color": "#00A8CC",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["shopping", "education", "technology", "electronics"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Crect fill='%2300A8CC' width='72' height='72' rx='16'/%3E%3Ctext x='50%25' y='50%25' font-size='48' text-anchor='middle' dy='0.35em'%3E⚡%3C/text%3E%3C/svg%3E",
+      "sizes": "72x72",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect fill='%2300A8CC' width='96' height='96' rx='20'/%3E%3Ctext x='50%25' y='50%25' font-size='64' text-anchor='middle' dy='0.35em'%3E⚡%3C/text%3E%3C/svg%3E",
+      "sizes": "96x96",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect fill='%2300A8CC' width='128' height='128' rx='24'/%3E%3Ctext x='50%25' y='50%25' font-size='88' text-anchor='middle' dy='0.35em'%3E⚡%3C/text%3E%3C/svg%3E",
+      "sizes": "128x128",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%2300A8CC' width='192' height='192' rx='32'/%3E%3Ctext x='50%25' y='50%25' font-size='128' text-anchor='middle' dy='0.35em'%3E⚡%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect fill='%2300A8CC' width='512' height='512' rx='96'/%3E%3Ctext x='50%25' y='50%25' font-size='360' text-anchor='middle' dy='0.35em'%3E⚡%3C/text%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1280 720'%3E%3Crect fill='%23F0F8FF' width='1280' height='720'/%3E%3Crect fill='%2300A8CC' y='0' width='1280' height='120'/%3E%3Ctext x='640' y='70' font-size='48' fill='white' text-anchor='middle' font-weight='bold'%3EElectroBénin%3C/text%3E%3Ctext x='640' y='400' font-size='36' fill='%231A1A2E' text-anchor='middle'%3EComposants Électroniques au Bénin%3C/text%3E%3C/svg%3E",
+      "sizes": "1280x720",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "Page d'accueil ElectroBénin"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 1334'%3E%3Crect fill='%23F0F8FF' width='750' height='1334'/%3E%3Crect fill='%2300A8CC' y='0' width='750' height='100'/%3E%3Ctext x='375' y='60' font-size='32' fill='white' text-anchor='middle' font-weight='bold'%3EElectroBénin%3C/text%3E%3Ctext x='375' y='700' font-size='28' fill='%231A1A2E' text-anchor='middle'%3ECatalogue Mobile%3C/text%3E%3C/svg%3E",
+      "sizes": "750x1334",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "Version mobile ElectroBénin"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Catalogue",
+      "short_name": "Catalogue",
+      "description": "Voir tous les produits",
+      "url": "/#products",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect fill='%2300A8CC' width='96' height='96' rx='20'/%3E%3Ctext x='50%25' y='50%25' font-size='48' text-anchor='middle' dy='0.35em'%3E📦%3C/text%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Mon Panier",
+      "short_name": "Panier",
+      "description": "Voir mon panier d'achats",
+      "url": "/panier.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect fill='%2300A8CC' width='96' height='96' rx='20'/%3E%3Ctext x='50%25' y='50%25' font-size='48' text-anchor='middle' dy='0.35em'%3E🛒%3C/text%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Suivi",
+      "short_name": "Suivi",
+      "description": "Suivre ma commande",
+      "url": "/suivi.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect fill='%2300A8CC' width='96' height='96' rx='20'/%3E%3Ctext x='50%25' y='50%25' font-size='48' text-anchor='middle' dy='0.35em'%3E🚚%3C/text%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "related_applications": [],
+  "prefer_related_applications": false
+}

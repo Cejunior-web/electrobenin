@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#00A8CC">
+    <title>Contact - ElectroBénin</title>
+    <meta name="description" content="Contactez ElectroBénin pour toute question sur nos produits électroniques. Support 7j/7.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <style>
+        .contact-page {
+            padding-top: 120px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #F0F8FF 0%, #E6F0FF 100%);
+            padding-bottom: 80px;
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00A8CC, #007BFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .contact-form-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form-card h2 {
+            margin-bottom: 30px;
+            color: #1A1A2E;
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1A1A2E;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #E9ECEF;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00A8CC;
+            box-shadow: 0 0 0 3px rgba(0, 168, 204, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, #00A8CC 0%, #007BFF 100%);
+            padding: 40px;
+            border-radius: 12px;
+            color: white;
+        }
+        
+        .contact-info-card h2 {
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info-item i {
+            font-size: 1.5rem;
+            margin-top: 5px;
+            min-width: 30px;
+        }
+        
+        .contact-info-item h3 {
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-info-item p {
+            opacity: 0.9;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .social-links-contact {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .social-links-contact h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-form-card,
+            .contact-info-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">Electro<span class="highlight">Bénin</span></span>
+                </a>
+                
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i> Accueil
+                    </a>
+                    <a href="index.html#products" class="nav-link">
+                        <i class="fas fa-box"></i> Catalogue
+                    </a>
+                    <a href="suivi.html" class="nav-link">
+                        <i class="fas fa-truck"></i> Suivi
+                    </a>
+                    <a href="contact.html" class="nav-link active">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                    <a href="panier.html" class="nav-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </nav>
+                
+                <button class="menu-toggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Contact -->
+    <main class="contact-page">
+        <div class="contact-container">
+            <div class="page-title">
+                <h1><i class="fas fa-envelope"></i> Nous Contacter</h1>
+                <p class="section-subtitle">Une question ? Besoin d'aide ? Nous sommes là pour vous !</p>
+            </div>
+            
+            <div class="contact-grid">
+                <!-- Formulaire -->
+                <div class="contact-form-card">
+                    <h2>Envoyez-nous un message</h2>
+                    
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" name="from_name" placeholder="Ex: Jean Dupont" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="from_email" placeholder="exemple@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+229 XX XX XX XX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Décrivez votre demande..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%; padding: 16px; font-size: 1.1rem;">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                        
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #6C757D; text-align: center;">
+                            <i class="fas fa-clock"></i> Réponse sous 24h ouvrées
+                        </p>
+                    </form>
+                </div>
+                
+                <!-- Infos Contact -->
+                <div class="contact-info-card">
+                    <h2>Informations de contact</h2>
+                    
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Adresse</h3>
+                            <p>Cotonou, Bénin<br>Quartier des affaires</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p>+229 60 12 34 56<br>Lun-Sam : 8h-18h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contact@electrobenin.com<br>support@electrobenin.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <p>+229 60 12 34 56<br>Réponse rapide garantie</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links-contact">
+                        <h3>Suivez-nous</h3>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="padding: 30px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>&copy; 2025 ElectroBénin. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========== CONFIGURATION EMAILJS ==========
+        // REMPLACE CES 3 VALEURS PAR LES TIENNES:
+        const EMAILJS_PUBLIC_KEY = '0oo-MPf8INqtE8SR6';        // Ex: 'abcd1234xyz'
+        const EMAILJS_SERVICE_ID = 'service_1kcry2s';        // Ex: 'service_xxx'
+        const EMAILJS_TEMPLATE_ID = 'template_urfbu7g';      // Ex: 'template_xxx'
+        
+        // Initialiser EmailJS
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+        
+        // Mise à jour compteur panier
+        function updateCartCounter() {
+            const cart = JSON.parse(localStorage.getItem('electrobenin_cart')) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelectorAll('.cart-count').forEach(counter => {
+                counter.textContent = totalItems;
+                counter.style.display = totalItems > 0 ? 'flex' : 'none';
+            });
+        }
+        updateCartCounter();
+        
+        // Formulaire de contact
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const button = document.getElementById('submit-btn');
+            const originalHTML = button.innerHTML;
+            
+            // Désactiver le bouton
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            
+            // Envoyer l'email via EmailJS
+            emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
+                .then(function() {
+                    // Succès
+                    showNotification('✅ Message envoyé avec succès ! Nous vous répondrons rapidement.', 'success');
+                    document.getElementById('contact-form').reset();
+                    button.disabled = false;
+                    button.innerHTML = originalHTML;
+                }, function(error) {
+                    // Erreur
+                    console.error('Erreur EmailJS:', error);
+                    showNotification('❌ Erreur lors de l\'envoi. Réessayez ou contactez-nous par téléphone.', 'error');
+                    button.disabled = false;
+                    button.innerHTML = originalHTML;
+                });
+        });
+        
+        // Notification toast
+        function showNotification(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.classList.add('show'), 100);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 5000);
+        }
+        
+        // Menu mobile
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav').classList.remove('active');
+                document.querySelector('.menu-toggle').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

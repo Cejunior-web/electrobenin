@@ -1,9 +1,8 @@
 // ========================================
 // ELECTROBENIN - JAVASCRIPT PRINCIPAL
-// Version: 1.0.0 Production
+// Version: 2.2.0 - PRODUCTION READY
 // ========================================
 
-// Classe principale ElectroBénin
 class ElectroBeninApp {
     constructor() {
         this.products = [];
@@ -14,145 +13,36 @@ class ElectroBeninApp {
     async init() {
         console.log('⚡ ElectroBénin - Initialisation...');
         
-        // Mettre à jour le compteur panier
         this.updateCartCounter();
-        
-        // Charger les produits
-        this.loadProducts();
-        
-        // Configurer les écouteurs
+        await this.loadProducts();
         this.setupEventListeners();
-        
-        // Charger les produits dans la page
-        this.displayProducts();
+        this.setupUserMenu();
     }
 
-    loadProducts() {
-        // Données produits statiques (pas de backend requis)
-        this.products = [
-            {
-                _id: '1',
-                name: 'Arduino Uno R3',
-                description: 'Carte de développement idéale pour débutants',
-                price: 12000,
-                stock: 50,
-                category: 'Microcontrôleurs',
-                image: 'https://store-usa.arduino.cc/cdn/shop/files/A000073_00.front_1200x900.jpg',
-                tag: 'POPULAIRE'
-            },
-            {
-                _id: '2',
-                name: 'LCD 16×2 avec I2C',
-                description: 'Écran LCD avec interface simplifiée',
-                price: 6500,
-                stock: 35,
-                category: 'Afficheurs',
-                image: 'https://m.media-amazon.com/images/I/71z8VnS2bAL._AC_SL1500_.jpg',
-                tag: 'POPULAIRE'
-            },
-            {
-                _id: '3',
-                name: 'ESP32 Dev Board',
-                description: 'WiFi + Bluetooth intégré',
-                price: 18000,
-                stock: 25,
-                category: 'Microcontrôleurs',
-                image: 'https://m.media-amazon.com/images/I/61Y9EwKCj1L._AC_SL1500_.jpg'
-            },
-            {
-                _id: '4',
-                name: 'Capteur HC-SR04',
-                description: 'Capteur ultrasonique de distance',
-                price: 3500,
-                stock: 100,
-                category: 'Capteurs',
-                image: 'https://m.media-amazon.com/images/I/61R1A7CuHTL._AC_SL1500_.jpg',
-                tag: 'POPULAIRE'
-            },
-            {
-                _id: '5',
-                name: 'Pack Résistances 500pcs',
-                description: 'Assortiment de résistances',
-                price: 2500,
-                stock: 30,
-                category: 'Résistances',
-                image: 'https://m.media-amazon.com/images/I/71YtGZ2PqRL._AC_SL1500_.jpg',
-                tag: 'NOUVEAU'
-            },
-            {
-                _id: '6',
-                name: 'Module Relais 5V',
-                description: 'Contrôle de charges AC/DC',
-                price: 2800,
-                stock: 60,
-                category: 'Modules',
-                image: 'https://m.media-amazon.com/images/I/71O-7U58WGL._AC_SL1500_.jpg'
-            },
-            {
-                _id: '7',
-                name: 'Raspberry Pi 4 Model B',
-                description: 'Mini ordinateur 4GB RAM, idéal pour projets IoT',
-                price: 45000,
-                stock: 15,
-                category: 'Microcontrôleurs',
-                image: 'https://m.media-amazon.com/images/I/61n17rVxXtL._AC_SL1500_.jpg'
-            },
-            {
-                _id: '8',
-                name: 'Capteur DHT22',
-                description: 'Capteur de température et humidité haute précision',
-                price: 4500,
-                stock: 65,
-                category: 'Capteurs',
-                image: 'https://m.media-amazon.com/images/I/61DGhJ1nTQL._AC_SL1500_.jpg'
-            },
-            {
-                _id: '9',
-                name: 'Fer à Souder 60W',
-                description: 'Fer à souder avec contrôle de température',
-                price: 9800,
-                stock: 28,
-                category: 'Outils',
-                image: 'https://m.media-amazon.com/images/I/71cTlLWHtmL._AC_SL1500_.jpg'
-            },
-            {
-                _id: '10',
-                name: 'Multimètre Numérique',
-                description: 'Multimètre avec testeur de continuité',
-                price: 12500,
-                stock: 22,
-                category: 'Outils',
-                image: 'https://m.media-amazon.com/images/I/71Ebj2lJawL._AC_SL1500_.jpg'
-            },
-            {
-                _id: '11',
-                name: 'Module Bluetooth HC-05',
-                description: 'Module Bluetooth pour communication sans fil',
-                price: 5500,
-                stock: 40,
-                category: 'Modules',
-                image: 'https://m.media-amazon.com/images/I/61KKxJz+fNL._AC_SL1500_.jpg'
-            },
-            {
-                _id: '12',
-                name: 'Écran OLED 0.96"',
-                description: 'Écran OLED I2C 128×64 pixels',
-                price: 7500,
-                stock: 30,
-                category: 'Afficheurs',
-                image: 'https://m.media-amazon.com/images/I/61mp6JVLJoL._AC_SL1500_.jpg',
-                tag: 'NOUVEAU'
-            }
-        ];
+    async loadProducts() {
+        console.log('📦 Chargement des produits depuis l\'API...');
         
-        console.log(`✅ ${this.products.length} produits chargés`);
+        try {
+            const result = await getProducts();
+            
+            if (result.success) {
+                this.products = result.products;
+                console.log(`✅ ${this.products.length} produits chargés`);
+                this.displayProducts();
+            } else {
+                console.error('❌ Erreur API:', result.message);
+                this.showNotification('Erreur lors du chargement des produits', 'error');
+            }
+        } catch (error) {
+            console.error('❌ Erreur réseau:', error);
+            this.showNotification('Impossible de charger les produits', 'error');
+        }
     }
 
     displayProducts(filter = 'all', search = '') {
         const container = document.getElementById('products-container');
         if (!container) return;
 
-        // Filtrer les produits
         let filteredProducts = this.products;
         
         if (filter !== 'all') {
@@ -168,24 +58,23 @@ class ElectroBeninApp {
             );
         }
 
-        // Afficher les produits
         if (filteredProducts.length === 0) {
             container.innerHTML = `
-                <div class="no-products">
-                    <i class="fas fa-search"></i>
-                    <h3>Aucun produit trouvé</h3>
-                    <p>Essayez d'autres termes de recherche</p>
+                <div class="no-products" style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+                    <i class="fas fa-search" style="font-size: 64px; color: #ddd; margin-bottom: 20px;"></i>
+                    <h3 style="margin-bottom: 10px;">Aucun produit trouvé</h3>
+                    <p style="color: #666;">Essayez d'autres termes de recherche</p>
                 </div>
             `;
             return;
         }
 
-        container.innerHTML = filteredProducts.map(product => `
-            <div class="product-card" data-id="${product._id}">
+        container.innerHTML = filteredProducts.map((product, index) => `
+            <div class="product-card" data-index="${index}">
                 <div class="product-image">
                     <img src="${product.image}" 
                          alt="${product.name}" 
-                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%2300A8CC%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2224%22 fill=%22white%22 text-anchor=%22middle%22 dy=%22.3em%22%3E${encodeURIComponent(product.name.substring(0, 20))}%3C/text%3E%3C/svg%3E'"
+                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%2300A8CC%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2224%22 fill=%22white%22 text-anchor=%22middle%22 dy=%22.3em%22%3EProduit%3C/text%3E%3C/svg%3E'"
                          loading="lazy">
                     ${product.tag ? `<span class="product-tag">${product.tag}</span>` : ''}
                 </div>
@@ -202,28 +91,36 @@ class ElectroBeninApp {
                         ${product.stock > 20 ? 'En stock' : 'Stock limité'} (${product.stock})
                     </div>
                     
-                    <button class="add-to-cart" data-id="${product._id}">
+                    <button class="add-to-cart btn-add-cart" onclick="window.ElectroBeninApp.addToCartByIndex(${index})">
                         <i class="fas fa-cart-plus"></i> Ajouter au panier
                     </button>
                 </div>
             </div>
         `).join('');
-
-        // Ajouter les écouteurs d'événements
-        this.setupProductButtons();
     }
 
-    setupProductButtons() {
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const productId = e.target.closest('[data-id]').dataset.id;
-                const product = this.products.find(p => p._id === productId);
-                
-                if (product) {
-                    this.addToCart(product);
-                }
-            });
-        });
+    addToCartByIndex(index) {
+        const product = this.products[index];
+        
+        if (!product) {
+            console.error('Produit non trouvé à l\'index:', index);
+            this.showNotification('Erreur: Produit introuvable', 'error');
+            return;
+        }
+        
+        this.addToCart(product);
+    }
+
+    addToCartById(productId) {
+        const product = this.products.find(p => p._id === productId);
+        
+        if (!product) {
+            console.error('Produit non trouvé:', productId);
+            this.showNotification('Erreur: Produit introuvable', 'error');
+            return;
+        }
+        
+        this.addToCart(product);
     }
 
     addToCart(product) {
@@ -233,30 +130,36 @@ class ElectroBeninApp {
             existingItem.quantity += 1;
         } else {
             this.cart.push({
-                ...product,
+                _id: product._id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                category: product.category,
                 quantity: 1
             });
         }
         
-        // Sauvegarder dans localStorage
         localStorage.setItem('electrobenin_cart', JSON.stringify(this.cart));
-        
-        // Mettre à jour le compteur
         this.updateCartCounter();
-        
-        // Afficher une notification
         this.showNotification(`${product.name} ajouté au panier`, 'success');
         
-        // Animation du bouton
-        const button = document.querySelector(`[data-id="${product._id}"] .add-to-cart`);
-        if (button) {
-            button.classList.add('added');
-            button.innerHTML = '<i class="fas fa-check"></i> Ajouté !';
-            setTimeout(() => {
-                button.classList.remove('added');
-                button.innerHTML = '<i class="fas fa-cart-plus"></i> Ajouter au panier';
-            }, 1500);
-        }
+        // Animation bouton - chercher par le produit dans le DOM
+        const allCards = document.querySelectorAll('.product-card');
+        allCards.forEach(card => {
+            const button = card.querySelector('.btn-add-cart');
+            if (button && button.onclick && button.onclick.toString().includes(product._id)) {
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Ajouté !';
+                button.style.background = '#10b981';
+                button.disabled = true;
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.style.background = '';
+                    button.disabled = false;
+                }, 1500);
+            }
+        });
     }
 
     updateCartCounter() {
@@ -269,25 +172,65 @@ class ElectroBeninApp {
     }
 
     showNotification(message, type = 'success') {
-        const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
-        toast.innerHTML = `
+        // Supprimer les anciennes notifications
+        document.querySelectorAll('.eb-notification').forEach(n => n.remove());
+        
+        const notification = document.createElement('div');
+        notification.className = 'eb-notification eb-notification-' + type;
+        notification.innerHTML = `
             <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
             <span>${message}</span>
         `;
         
-        document.body.appendChild(toast);
+        // Styles inline
+        Object.assign(notification.style, {
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            background: type === 'success' ? '#10b981' : '#ef4444',
+            color: 'white',
+            padding: '16px 24px',
+            borderRadius: '8px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            fontSize: '15px',
+            fontWeight: '500',
+            minWidth: '300px',
+            zIndex: '999999',
+            animation: 'slideInFromRight 0.3s ease'
+        });
         
-        setTimeout(() => toast.classList.add('show'), 100);
+        document.body.appendChild(notification);
         
         setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
+            notification.style.animation = 'slideOutToRight 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
         }, 3000);
     }
 
+    setupUserMenu() {
+        const userMenu = document.getElementById('user-menu');
+        const authLink = document.getElementById('auth-link');
+        
+        if (!userMenu || !authLink) return;
+        
+        if (typeof isAuthenticated === 'function' && isAuthenticated()) {
+            const user = getUser();
+            const userName = document.getElementById('user-name');
+            if (userName && user) {
+                userName.textContent = user.name;
+            }
+            userMenu.style.display = 'block';
+            authLink.style.display = 'none';
+        } else {
+            userMenu.style.display = 'none';
+            authLink.style.display = 'block';
+        }
+    }
+
     setupEventListeners() {
-        // Recherche
         const searchInput = document.getElementById('search-input');
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
@@ -296,57 +239,63 @@ class ElectroBeninApp {
             });
         }
 
-        // Filtres par catégorie
         document.querySelectorAll('.filter-btn').forEach(button => {
             button.addEventListener('click', (e) => {
-                // Retirer active de tous les boutons
                 document.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 
-                // Ajouter active au bouton cliqué
                 e.target.classList.add('active');
                 
-                // Filtrer les produits
                 const search = searchInput?.value || '';
                 this.displayProducts(e.target.dataset.category, search);
             });
         });
 
-        // Newsletter
-        const newsletterForm = document.getElementById('newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = newsletterForm.querySelector('input').value;
-                
-                this.showNotification(`Merci ! Vous êtes inscrit avec : ${email}`);
-                newsletterForm.reset();
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                this.classList.toggle('active');
             });
         }
     }
 }
 
-// Démarrer l'application quand le DOM est prêt
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialiser l'app
-    const app = new ElectroBeninApp();
+// Ajouter les animations CSS
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInFromRight {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
     
-    // Exposer au global pour les autres pages
+    @keyframes slideOutToRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Démarrer l'application
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Initialisation ElectroBénin...');
+    
+    const app = new ElectroBeninApp();
     window.ElectroBeninApp = app;
     
     console.log('✅ ElectroBénin initialisé avec succès');
 });
-
-// Service Worker pour PWA (optionnel)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('✅ Service Worker enregistré:', registration);
-            })
-            .catch(error => {
-                console.log('❌ Erreur Service Worker:', error);
-            });
-    });
-}

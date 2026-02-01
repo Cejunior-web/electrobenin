@@ -90,7 +90,28 @@
                     <a href="contact.html" class="nav-link">
                         <i class="fas fa-envelope"></i> Contact
                     </a>
-                </nav>
+                    <!-- Nouveau : Menu utilisateur -->
+                    <div id="user-menu" style="display: none;">
+                    <span id="user-name"></span>
+                    <button onclick="logout()">Déconnexion</button>
+                    </div>
+                    <div id="auth-link">
+                    <a href="auth.html">Connexion</a>
+                    </div>
+                    </nav>
+                
+
+                <script>
+            // Afficher le menu utilisateur si connecté
+        document.addEventListener('DOMContentLoaded', () => {
+        if (isAuthenticated()) {
+        const user = getUser();
+        document.getElementById('user-name').textContent = user.name;
+        document.getElementById('user-menu').style.display = 'block';
+        document.getElementById('auth-link').style.display = 'none';
+    }
+});
+                </script>
                 
                 <button class="menu-toggle" aria-label="Menu">
                     <i class="fas fa-bars"></i>
@@ -362,8 +383,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="script.js" defer></script>
+    
     
     <script>
         // Masquer le loader
@@ -396,5 +416,10 @@
             });
         });
     </script>
+
+    <!-- API ElectroBénin -->
+    <script src="api.js"></script>
+    <!-- Script principal -->
+    <script src="script.js"></script>
 </body>
 </html>

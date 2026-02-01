@@ -1,0 +1,119 @@
+git add .gitignore
+git commit -m "📝 Ajout .gitignore"
+git push
+```
+
+---
+
+## 🎯 ÉTAPE 2/5 - DÉSACTIVER VERCEL (1 MIN)
+
+### Sur GitHub
+
+1. Va sur: `https://github.com/Cejunior-web/electrobenin/settings`
+2. Menu gauche: **"Integrations"** ou **"GitHub Apps"**
+3. Trouve **Vercel** → Clic **"Configure"**
+4. En bas: **"Uninstall"** ou **"Remove"**
+
+**OU** simplement ignore l'erreur Vercel, on se concentre sur Hostinger !
+
+---
+
+## 🎯 ÉTAPE 3/5 - PRÉPARER FICHIERS HOSTINGER (5 MIN)
+
+### Créer fichier de déploiement
+
+**Créer `deploy-hostinger.txt`** (pour tes notes):
+```
+====================================
+DÉPLOIEMENT HOSTINGER - ELECTROBENIN
+====================================
+
+FICHIERS À UPLOADER:
+✅ index.html
+✅ panier.html
+✅ suivi.html
+✅ style.css
+✅ script.js
+✅ manifest.json
+✅ .htaccess
+
+DOSSIER CIBLE HOSTINGER:
+/public_html/
+
+URL FINALE:
+https://electrobenin.com (ou ton domaine)
+
+INFOS CONNEXION FTP:
+Hôte: ftp.ton-domaine.com
+User: ton_user
+Pass: [voir hPanel Hostinger]
+Port: 21
+```
+
+---
+
+## 🎯 ÉTAPE 4/5 - DÉPLOIEMENT HOSTINGER (15 MIN)
+
+### A. Connexion hPanel
+
+1. **Va sur:** https://hpanel.hostinger.com
+2. **Login** avec ton compte Hostinger
+3. Clique sur ton **hébergement actif**
+
+### B. Option 1: File Manager (LE PLUS SIMPLE)
+
+**Étapes détaillées:**
+
+1. Dans hPanel, clique **"File Manager"**
+2. Navigue vers **`/public_html/`**
+3. **SUPPRIME** tout ce qui est dedans (sauf .htaccess si existe)
+4. Clique bouton **"Upload"** (en haut)
+5. **Sélectionne tes 7 fichiers:**
+   - index.html
+   - panier.html
+   - suivi.html
+   - style.css
+   - script.js
+   - manifest.json
+   - .htaccess
+
+6. **Attends** la fin de l'upload (barre verte 100%)
+7. **Vérifie** que les fichiers sont bien là
+
+### C. Option 2: FileZilla (Si File Manager bug)
+
+**Installation FileZilla (si pas installé):**
+- Télécharge: https://filezilla-project.org/download.php?type=client
+- Installe (Next, Next, Finish)
+
+**Configuration FileZilla:**
+
+1. **Ouvre FileZilla**
+2. **Infos FTP** (dans hPanel > onglet "FTP Accounts"):
+```
+   Hôte: ftp.TON-DOMAINE.com
+   Nom d'utilisateur: TON_USER@TON-DOMAINE.com
+   Mot de passe: [créé dans hPanel]
+   Port: 21
+```
+
+3. **Connexion rapide:**
+   - Entre les infos en haut
+   - Clic "Connexion rapide"
+
+4. **Upload:**
+   - Panneau gauche: Navigue vers ton dossier local
+   - Panneau droit: Va dans `/public_html/`
+   - **Sélectionne** tes 7 fichiers à gauche
+   - **Glisse-dépose** vers la droite
+   - Attends transfert terminé
+
+---
+
+## 🎯 ÉTAPE 5/5 - TESTS & VALIDATION (10 MIN)
+
+### A. Vérifier URL
+```
+https://TON-DOMAINE.com
+https://TON-DOMAINE.com/panier.html
+https://TON-DOMAINE.com/suivi.html

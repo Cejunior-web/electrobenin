@@ -2,8 +2,10 @@
 // CONFIGURATION API ELECTROBENIN
 // ==========================================
 
+const API_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3000/api'
+  : 'https://eb-api-seven.vercel.app/api'; // À changer après déploiement
 
-const API_URL = 'https://electrobenin-backend.vercel.app/api';
 // ==========================================
 // HELPERS
 // ==========================================
@@ -65,7 +67,7 @@ async function register(name, email, password, phone = '') {
         }
     } catch (error) {
         console.error('Erreur inscription:', error);
-        return { success: false, message: 'Erreur réseau. Vérifiez que le backend est démarré.' };
+        return { success: false, message: 'Erreur réseau' };
     }
 }
 
@@ -90,7 +92,7 @@ async function login(email, password) {
         }
     } catch (error) {
         console.error('Erreur connexion:', error);
-        return { success: false, message: 'Erreur réseau. Vérifiez que le backend est démarré.' };
+        return { success: false, message: 'Erreur réseau' };
     }
 }
 
@@ -157,7 +159,7 @@ async function getProducts(params = {}) {
         }
     } catch (error) {
         console.error('Erreur produits:', error);
-        return { success: false, message: 'Erreur réseau. Vérifiez que le backend est démarré sur http://localhost:5000' };
+        return { success: false, message: 'Erreur réseau' };
     }
 }
 
@@ -304,5 +306,3 @@ async function cancelOrder(orderId, reason) {
         return { success: false, message: 'Erreur réseau' };
     }
 }
-
-console.log('✅ API ElectroBénin chargée - URL:', API_URL);

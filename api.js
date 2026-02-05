@@ -4,7 +4,7 @@
 
 const API_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:3000/api'
-  : 'https://eb-api-seven.vercel.app/api'; // À changer après déploiement
+  : 'https://eb-api-render.onrender.com/api'; // À changer après déploiement
 
 // ==========================================
 // HELPERS

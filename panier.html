@@ -3,13 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#00A8CC">
-    <title>Mon Panier - ElectroBénin</title>
-    <meta name="description" content="Consultez votre panier d'achats ElectroBénin. Livraison rapide au Bénin.">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Panier - ElectroBénin</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cart-page {
+            padding-top: 120px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFF9F5 0%, #FFF3EB 100%);
+        }
+        
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-title h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .cart-empty {
+            text-align: center;
+            padding: 80px 40px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .cart-empty i {
+            font-size: 5rem;
+            color: var(--primary-light);
+            margin-bottom: 20px;
+        }
+        
+        .cart-empty h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .cart-empty p {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .cart-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .cart-items {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+        }
+        
+        .cart-item {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            gap: 20px;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cart-item-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+        
+        .cart-item-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .cart-item-category {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .cart-item-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--gray-light);
+            padding: 8px 15px;
+            border-radius: 50px;
+        }
+        
+        .quantity-btn {
+            background: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .quantity-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .cart-item-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+        
+        .remove-item:hover {
+            color: var(--primary);
+        }
+        
+        .cart-summary {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .summary-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .summary-total {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            border-bottom: none;
+            padding-top: 20px;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            margin-top: 30px;
+            padding: 18px;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .cart-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+                grid-template-rows: auto auto;
+            }
+            
+            .cart-item-actions {
+                grid-column: 1 / -1;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -35,14 +247,6 @@
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
                     </a>
-                    <a href="contact.html" class="nav-link">
-                        <i class="fas fa-envelope"></i> Contact
-                    </a>
-                    <div class="lang-switch">
-  <button class="lang-btn active" data-lang="fr">FR</button>
-  <button class="lang-btn" data-lang="en">EN</button>
-</div>
-
                 </nav>
                 
                 <button class="menu-toggle" aria-label="Menu">
@@ -56,11 +260,10 @@
     <main class="cart-page">
         <div class="cart-container">
             <div class="page-title">
-                <h1 data-i18n="panier_title"><i class="fas fa-shopping-cart"></i> Mon Panier</h1>
+                <h1><i class="fas fa-shopping-cart"></i> Mon Panier</h1>
                 <p class="section-subtitle">Vérifiez vos articles avant de passer commande</p>
             </div>
             
-            <!-- Panier Vide -->
             <div id="cart-empty" class="cart-empty" style="display: none;">
                 <i class="fas fa-shopping-cart"></i>
                 <h2>Votre panier est vide</h2>
@@ -70,7 +273,6 @@
                 </a>
             </div>
             
-            <!-- Panier Plein -->
             <div id="cart-full" class="cart-content" style="display: none;">
                 <div class="cart-items" id="cart-items-list">
                     <!-- Produits chargés dynamiquement -->
@@ -111,62 +313,10 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <span class="logo-icon">⚡</span>
-                        <span class="logo-text">Electro<span class="highlight">Bénin</span></span>
-                    </div>
-                    <p class="footer-description">Votre partenaire de confiance pour tous vos besoins en composants électroniques au Bénin.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Boutique</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html#products">Tous les produits</a></li>
-                        <li><a href="#">Nouveautés</a></li>
-                        <li><a href="#">Promotions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="panier.html">Mon panier</a></li>
-                        <li><a href="suivi.html">Suivi commande</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+229 60 12 34 56</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>contact@electrobenin.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 ElectroBénin. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- API ElectroBénin -->
-    <script src="api.js"></script>
-    <!-- Script principal -->
-    <script src="script.js"></script>
-    
     <script>
         class CartPage {
             constructor() {
-                this.cart = JSON.parse(localStorage.getItem('electrobenin_cart')) || [];
+                this.cart = JSON.parse(localStorage.getItem('cart')) || [];
                 this.init();
             }
             
@@ -201,10 +351,9 @@
                         <img src="${item.image}" 
                              alt="${item.name}" 
                              class="cart-item-image"
-                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%2300A8CC%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2214%22 fill=%22white%22 text-anchor=%22middle%22 dy=%22.3em%22%3EProduit%3C/text%3E%3C/svg%3E'"
-                             loading="lazy">
+                             onerror="this.src='https://via.placeholder.com/100/FF6B35/FFFFFF?text=Prod'">
                         
-                        <div class="cart-item-info">
+                        <div class="cart-item-details">
                             <span class="cart-item-category">${item.category}</span>
                             <h3>${item.name}</h3>
                             <div class="cart-item-price">${item.price.toLocaleString()} FCFA</div>
@@ -269,12 +418,20 @@
                 const total = document.getElementById('cart-total').textContent;
                 const orderNumber = 'EB-' + Date.now().toString().slice(-6);
                 
-                alert(`🎉 Commande confirmée !\n\nNuméro: ${orderNumber}\nTotal: ${total}\nLivraison: 24-48h\n\nMerci pour votre confiance !`);
+                // Simuler la commande
+                alert(`🎉 Commande confirmée !
+                
+Numéro: ${orderNumber}
+Total: ${total}
+Livraison: 24-48h
+
+Merci pour votre confiance !`);
                 
                 // Vider le panier
                 this.cart = [];
                 this.saveCart();
                 
+                // Rediriger vers la page d'accueil
                 setTimeout(() => {
                     window.location.href = 'index.html';
                 }, 2000);
@@ -291,8 +448,13 @@
             showNotification(message) {
                 const toast = document.createElement('div');
                 toast.className = 'toast success';
-                toast.innerHTML = `<i class="fas fa-check-circle"></i><span>${message}</span>`;
+                toast.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <span>${message}</span>
+                `;
+                
                 document.body.appendChild(toast);
+                
                 setTimeout(() => toast.classList.add('show'), 100);
                 setTimeout(() => {
                     toast.classList.remove('show');
@@ -301,32 +463,30 @@
             }
             
             saveCart() {
-                localStorage.setItem('electrobenin_cart', JSON.stringify(this.cart));
+                localStorage.setItem('cart', JSON.stringify(this.cart));
             }
             
             setupEventListeners() {
                 document.getElementById('checkout-btn').addEventListener('click', () => this.checkout());
                 
-                const menuToggle = document.querySelector('.menu-toggle');
-                const nav = document.querySelector('.nav');
-                menuToggle.addEventListener('click', function() {
-                    nav.classList.toggle('active');
+                // Menu mobile
+                document.querySelector('.menu-toggle').addEventListener('click', function() {
+                    document.querySelector('.nav').classList.toggle('active');
                     this.classList.toggle('active');
                 });
                 
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.addEventListener('click', () => {
-                        nav.classList.remove('active');
-                        menuToggle.classList.remove('active');
+                        document.querySelector('.nav').classList.remove('active');
+                        document.querySelector('.menu-toggle').classList.remove('active');
                     });
                 });
             }
         }
         
+        // Initialiser la page panier
         const cartPage = new CartPage();
         window.cartPage = cartPage;
     </script>
-    <script src="i18n.js"></script>
-
 </body>
 </html>

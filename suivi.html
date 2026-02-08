@@ -35,6 +35,12 @@
                     <span class="logo-icon">⚡</span>
                     <span class="logo-text">Electro<span class="highlight">Bénin</span></span>
                 </a>
+
+                <div class="lang-switch">
+  <button data-lang="fr" class="lang-btn active">FR</button>
+  <button data-lang="en" class="lang-btn">EN</button>
+</div>
+
                 
                 <nav class="nav">
                     <a href="index.html" class="nav-link">
@@ -53,6 +59,11 @@
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
                     </a>
+                    <div class="lang-switch">
+  <button class="lang-btn active" data-lang="fr">FR</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+</div>
+
                 </nav>
                 
                 <button class="menu-toggle" aria-label="Menu">
@@ -66,7 +77,7 @@
     <main class="tracking-page">
         <div class="tracking-container">
             <div class="tracking-header">
-                <h1><i class="fas fa-truck"></i> Suivi de Commande</h1>
+                <h1 data-i18n="suivi_title"><i class="fas fa-truck"></i> Suivi de Commande</h1>
                 <p class="section-subtitle">Suivez l'état de votre commande en temps réel</p>
             </div>
             
@@ -417,5 +428,7 @@
             });
         });
     </script>
+    <script src="i18n.js"></script>
+
 </body>
 </html>

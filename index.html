@@ -72,23 +72,24 @@
                     <span class="logo-icon">⚡</span>
                     <span class="logo-text">Electro<span class="highlight">Bénin</span></span>
                 </a>
+
                 
                 <nav class="nav">
                     <a href="index.html" class="nav-link active">
-                        <i class="fas fa-home"></i> Accueil
-                    </a>
+                        <i class="fas fa-home"></i> <span data-i18n="nav_home">Accueil</span>
+
                     <a href="#products" class="nav-link">
-                        <i class="fas fa-box"></i> Catalogue
+                        <i class="fas fa-box"></i> <span data-i18n="nav_box">Catalogue</span> 
                     </a>
                     <a href="suivi.html" class="nav-link">
-                        <i class="fas fa-truck"></i> Suivi
+                        <i class="fas fa-truck"></i> <span data-i18n="nav_truck">Suivi</span> 
                     </a>
                     <a href="panier.html" class="nav-cart">
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-shopping-cart"></i> <span data-i18n="nav_shopping-cart">Panier</span> 
                         <span class="cart-count">0</span>
                     </a>
                     <a href="contact.html" class="nav-link">
-                        <i class="fas fa-envelope"></i> Contact
+                        <i class="fas fa-envelope"></i> <span data-i18n="nav_envelope">Contact</span> 
                     </a>
                     <!-- Nouveau : Menu utilisateur -->
                     <div id="user-menu" style="display: none;">
@@ -98,6 +99,12 @@
                     <div id="auth-link">
                     <a href="auth.html">Connexion</a>
                     </div>
+
+                    <div class="lang-switch">
+  <button class="lang-btn active" data-lang="fr">FR</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+</div>
+
                     </nav>
                 
 
@@ -124,14 +131,15 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Votre Partenaire Électronique au <span class="highlight">Bénin</span></h1>
-                <p class="hero-subtitle">
+                <h1 data-i18n="hero-title">Votre Partenaire Électronique au <span class="highlight">Bénin</span></h1>
+                <p data-i18n="hero-subtitle">
                     Arduino, capteurs, modules et outils de qualité pour vos projets. 
                     Livraison rapide dans tout le pays.
                 </p>
                 <div class="hero-buttons">
                     <a href="#products" class="btn btn-primary">
-                        <i class="fas fa-bolt"></i> Explorer le catalogue
+                        <i class="fas fa-bolt"></i><span data-i18n="btn_explore">Explorer le catalogue</span>
+                    </a>
                     </a>
                     <a href="#features" class="btn btn-outline">
                         <i class="fas fa-info-circle"></i> Nos services
@@ -382,7 +390,6 @@
             </div>
         </div>
     </footer>
-
     
     
     <script>
@@ -417,9 +424,20 @@
         });
     </script>
 
+    <!--Fallback image côté frontend-->
+    <img 
+  src="${product.image}" 
+  onerror="this.src='/images/placeholder.png'"
+  alt="${product.name.fr}"
+    >
+
+
     <!-- API ElectroBénin -->
     <script src="api.js"></script>
     <!-- Script principal -->
     <script src="script.js"></script>
+
+    <script src="i18n.js"></script>
+
 </body>
 </html>
